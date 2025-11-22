@@ -17,6 +17,12 @@ android_app {
         "SettingsLib",
         "qcrilhook-xiaomi",
     ],
+    optional_uses_libs: [
+        "com.qualcomm.qcrilhook",
+        "com.qti.extphone.extphonelib",
+        "androidx.window.extensions",
+        "androidx.window.sidecar",
+    ],
     required: [
         "hidden-api-whitelist-com.xiaomi.settings.xml",
         "privapp_whitelist_com.xiaomi.settings.xml",
