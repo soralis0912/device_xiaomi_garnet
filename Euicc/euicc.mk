@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-# Euicc path
-XIAOMI_EUICC := $(call my-dir)
+# Euicc path (absolute to tree root)
+XIAOMI_EUICC := device/xiaomi/garnet/Euicc
 
 # Soong Namespace
 PRODUCT_SOONG_NAMESPACES += \

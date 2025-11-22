@@ -154,7 +154,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Euicc
-$(call inherit-product, $(DEVICE_PATH)/Euicc/euicc.mk)
+$(call inherit-product, device/xiaomi/garnet/Euicc/euicc.mk)
 
 # Fastbootd
 PRODUCT_PACKAGES += \
