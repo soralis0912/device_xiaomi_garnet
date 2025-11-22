@@ -4,7 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := $(call my-dir)
 
 # Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -155,7 +154,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Euicc
-$(call inherit-product, $(LOCAL_PATH)/Euicc/euicc.mk)
+$(call inherit-product, $(DEVICE_PATH)/Euicc/euicc.mk)
 
 # Fastbootd
 PRODUCT_PACKAGES += \
