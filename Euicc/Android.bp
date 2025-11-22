@@ -6,36 +6,69 @@
 
 android_app {
     name: "XiaomiEuicc",
-
-    srcs: ["src/**/*.kt"],
-    resource_dirs: ["res"],
-
     certificate: "platform",
+    srcs: ["src/**/*.kt"],
     platform_apis: true,
     privileged: true,
     system_ext_specific: true,
-
-    optimize: {
-        proguard_flags_files: ["proguard.flags"],
-    },
+    static_libs: [
+        "androidx.core_core",
+        "androidx.preference_preference",
+        "SettingsLib",
+        "qcrilhook-xiaomi",
+    ],
     required: [
-        "org.lineageos.euicc.xml",
-        "hidden-api-whitelist-org.lineageos.euicc.xml",
+        "hidden-api-whitelist-com.xiaomi.settings.xml",
+        "privapp_whitelist_com.xiaomi.settings.xml",
+        "EuiccGoogle",
     ],
 }
 
-prebuilt_etc {
-    sub_dir: "permissions",
-    name: "org.lineageos.euicc.xml",
-    filename: "org.lineageos.euicc.xml",
-    src: "org.lineageos.euicc.xml",
+dex_import {
+    name: "mirilhook",
+    owner: "xiaomi",
+    jars: [
+        "proprietary/system_ext/framework/mirilhook.jar",
+    ],
+    system_ext_specific: true,
+}
+
+dex_import {
+    name: "qcrilhook-xiaomi",
+    owner: "xiaomi",
+    jars: [
+        "proprietary/system_ext/framework/qcrilhook-xiaomi.jar",
+    ],
     system_ext_specific: true,
 }
 
 prebuilt_etc {
+    name: "default-permissions-euicc.xml",
+    filename: "default-permissions-euicc.xml",
+    src: "permissions/default-permissions-euicc.xml",
+    sub_dir: "default-permissions",
+    product_specific: true,
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-euiccgoogle.xml",
+    filename: "privapp-permissions-euiccgoogle.xml",
+    src: "permissions/privapp-permissions-euiccgoogle.xml",
+    sub_dir: "permissions",
+    product_specific: true,
+}
+
+prebuilt_etc {
+    name: "hidden-api-whitelist-com.xiaomi.settings.xml",
+    filename: "hidden-api-whitelist-com.xiaomi.settings.xml",
+    src: "permissions/hidden-api-whitelist-com.xiaomi.settings.xml",
     sub_dir: "sysconfig",
-    name: "hidden-api-whitelist-org.lineageos.euicc.xml",
-    filename: "hidden-api-whitelist-org.lineageos.euicc.xml",
-    src: "hidden-api-whitelist-org.lineageos.euicc.xml",
+    system_ext_specific: true,
+}
+
+prebuilt_etc {
+    name: "privapp_whitelist_com.xiaomi.settings.xml",
+    src: "permissions/privapp_whitelist_com.xiaomi.settings.xml",
+    sub_dir: "permissions",
     system_ext_specific: true,
 }

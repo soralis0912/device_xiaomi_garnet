@@ -153,8 +153,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Euicc
-PRODUCT_PACKAGES += \
-    XiaomiEuicc
+$(call inherit-product, $(LOCAL_PATH)/Euicc/euicc.mk)
 
 # Fastbootd
 PRODUCT_PACKAGES += \
